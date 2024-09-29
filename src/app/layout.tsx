@@ -18,18 +18,6 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "codingaashram",
   description: "one stop solution for placement prep.",
-  // icons: {
-  //   icon: [
-  //       {
-  //           media: '(prefers-color-scheme: light)',
-  //           url: '/images/light-favicon.png',
-  //       },
-  //       {
-  //           media: '(prefers-color-scheme: dark)',
-  //           url: 'CODINGAASHRAM-preview-dark.png',
-  //       },
-  //   ],
-  // },
 };
 
 export default function RootLayout({
