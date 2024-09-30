@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Header from "@/components/Header";
 import "./globals.css";
 import "./images/CODINGAASHRAM-preview-dark.png"
 import "./images/CODINGAASHRAM-preview-light.png"
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>

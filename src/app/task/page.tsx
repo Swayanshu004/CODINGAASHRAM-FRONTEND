@@ -1,9 +1,7 @@
 "use client";
-
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
-
 
 // TaskPage Component
 const TaskPage = () => {
@@ -31,34 +29,169 @@ const TaskPage = () => {
   ];
 
   const questions = [
-    "What is the difference between let and const?",
-    "Explain the concept of hoisting in JavaScript.",
-    "How do arrow functions differ from regular functions?",
+    {
+      "correctOption": 0,
+      "options": [
+        "<p>",
+        "<h1>",
+        "<h2>",
+        "<h3>",
+        "<h4>"
+      ],
+      "question": "Which HTML tag is used to create a paragraph?"
+    },
+    {
+      "correctOption": 4,
+      "options": [
+        "<p>",
+        "<h1>",
+        "<h2>",
+        "<h3>",
+        "<h4>"
+      ],
+      "question": "Which HTML tag is used to create a heading of the smallest size?"
+    },
+    {
+      "correctOption": 2,
+      "options": [
+        "<img>",
+        "<h1>",
+        "<h2>",
+        "<h3>",
+        "<h4>"
+      ],
+      "question": "Which HTML tag is used to create a heading of size 2?"
+    },
+    {
+      "correctOption": 0,
+      "options": [
+        "alt",
+        "src",
+        "href",
+        "target",
+        "title"
+      ],
+      "question": "Which HTML attribute is used to specify the alternative text for an image?"
+    },
+    {
+      "correctOption": 1,
+      "options": [
+        "alt",
+        "src",
+        "href",
+        "target",
+        "title"
+      ],
+      "question": "Which HTML attribute is used to specify the source of an image?"
+    },
+    {
+      "correctOption": 2,
+      "options": [
+        "alt",
+        "src",
+        "href",
+        "target",
+        "title"
+      ],
+      "question": "Which HTML attribute is used to specify the URL of a link?"
+    },
+    {
+      "correctOption": 3,
+      "options": [
+        "alt",
+        "src",
+        "href",
+        "target",
+        "title"
+      ],
+      "question": "Which HTML attribute is used to specify where a link should open (e.g., in a new tab)?"
+    },
+    {
+      "correctOption": 1,
+      "options": [
+        "<div>",
+        "<h2>",
+        "<h1>",
+        "<b>",
+        "<strong>"
+      ],
+      "question": "Which tag is used to create a heading of size 1?"
+    },
+    {
+      "correctOption": 3,
+      "options": [
+        "<div>",
+        "<h2>",
+        "<h1>",
+        "<b>",
+        "<strong>"
+      ],
+      "question": "Which tag is used to create a bold text?"
+    },
+    {
+      "correctOption": 4,
+      "options": [
+        "<div>",
+        "<h2>",
+        "<h1>",
+        "<b>",
+        "<strong>"
+      ],
+      "question": "Which tag is used to create a strong text?"
+    },
+    {
+      "correctOption": 0,
+      "options": [
+        "<div>",
+        "<h2>",
+        "<h1>",
+        "<b>",
+        "<strong>"
+      ],
+      "question": "Which tag is used to create a division element (a container)?"
+    }
   ];
 
-  const tasks = [
-    "Complete the JavaScript basics tutorial.",
-    "Practice coding problems on array methods.",
-    "Build a small project to apply JavaScript concepts.",
+  const excercise = [
+    {
+      "answer": "<h1>This is a heading</h1>",
+      "task": "Create an h1 heading element with the text \"This is a heading\"."
+    },
+    {
+      "answer": "<h2>Welcome to my website!</h2>",
+      "task": "Create an h2 heading element with the text \"Welcome to my website!\"."
+    },
+    {
+      "answer": "<h3>Check out this paragraph!</h3>",
+      "task": "Create an h3 heading element with the text \"Check out this paragraph!\"."
+    },
+    {
+      "answer": " <p>This is a paragraph.</p>",
+      "task": "Create a paragraph element with the text \"This is a paragraph.\""
+    },
+    {
+      "answer": " <img src=\"myimage.jpg\" alt=\"My Image\">",
+      "task": "Create an image element that displays \"myimage.jpg\" with the alternative text \"My Image\"."
+    },
+    {
+      "answer": " <a href=\"https://www.google.com\">Visit Google</a>",
+      "task": "Create an anchor tag that links to \"https://www.google.com\" with the text \"Visit Google\"."
+    }
   ];
 
-  const cards = [
+  const resourse = [
     {
-      title: "Youtube",
-      src: "https://images.pexels.com/photos/11884525/pexels-photo-11884525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "link": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_elements",
+      "type": "Documentation"
     },
     {
-      title: "Blog",
-      src: "https://images.pexels.com/photos/11884525/pexels-photo-11884525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "link": "https://www.w3schools.com/html/html_elements.asp",
+      "type": "Blog"
     },
     {
-      title: "Github",
-      src: "https://images.pexels.com/photos/11884525/pexels-photo-11884525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1g",
-    },
-    {
-      title: "Github",
-      src: "https://images.pexels.com/photos/11884525/pexels-photo-11884525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1g",
-    },
+      "link": "https://www.youtube.com/watch?v=pQN-pnXPaVg",
+      "type": "YouTube"
+    }
   ];
 
   const [startIndex, setStartIndex] = useState(0);
@@ -77,30 +210,24 @@ const TaskPage = () => {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white flex justify-center overflow-hidden">
-      <div className="w-full bg-neutral-950 rounded-lg shadow-lg flex flex-col h-full">
-      
-
-        {/* Main Content Layout */}
-        <div className="flex flex-col overflow-hidden">
-          {/* Left Sidebar - Sticky Task Progress */}
+      <div className="w-full bg-neutral-900 rounded-lg shadow-lg flex flex-col h-full">
+        <div className="flex flex-col overflow-hidden w-full">
           <div
-            className="bg-gray-800 p-4 sticky top-4 flex flex-col items-center overflow-hidden max-h-dvh"
-            style={{ minWidth: "80px" }}
+            className="w-screen bg-neutral-900 py-4 px-10 flex flex-col justify-end items-end overflow-hidden"
           >
-            {/* Horizontal Scrollable numbers */}
-            <div className="flex items-center space-x-4 w-full">
+            <div className="flex items-center space-x-4 w-fit">
               <button
-                className="bg-gray-600 px-2 py-1 rounded"
+                className=" px-2 py-1 rounded"
                 onClick={handlePrev}
                 disabled={startIndex === 0}
               >
                 &lt;
               </button>
-              <div className="flex items-center space-x-2 overflow-x-hidden">
-                {steps.slice(startIndex, startIndex + 6).map((step) => (
+              <div className="flex items-center space-x- md:space-x-2 overflow-x-hidden">
+                {steps.slice(startIndex, startIndex + 7).map((step) => (
                   <div
                     key={step.id}
-                    className={`flex items-center justify-center min-h-10 w-11 rounded-full text-lg font-bold ${
+                    className={`flex items-center justify-center min-h-10 w-10 rounded-full text-lg font-semibold ${
                       step.status === "completed"
                         ? "bg-green-500 text-white"
                         : step.status === "not-completed"
@@ -115,7 +242,7 @@ const TaskPage = () => {
                 ))}
               </div>
               <button
-                className="bg-gray-600 px-2 py-1 rounded"
+                className=" px-2 py-1 rounded"
                 onClick={handleNext}
                 disabled={startIndex + 6 >= steps.length}
               >
@@ -124,50 +251,70 @@ const TaskPage = () => {
             </div>
           </div>
 
-          {/* Main Content */}
           <div className="flex-1 p-6 overflow-auto">
-            {/* Questions Section */}
             <div className="mb-6">
-              <h3 className="text-lg font-medium mb-4">Questions:</h3>
-              <div className="bg-neutral-900 p-4 rounded-lg mb-4">
-                <ul className="list-disc pl-5">
-                  {questions.map((question, index) => (
-                    <li key={index} className="mb-2">
-                      {question}
-                    </li>
+              <h3 className="text-xl font-bold mb-2 ml-4">Questions:</h3>
+              <div className="bg-black py-4 px-10 rounded-2xl">
+                <form action="">                  
+                  {questions.map((item, index) => (
+                    <div className="mb-7">
+                    <h2 className="font-mono text-xl my-2 text-[#ff4d00]">{item.question}</h2>
+                    <label>
+                      {item.options.map((i)=>(
+                        <div className="my-1">
+                          <input type="radio" name="question0" value={i} className="text-black"/>
+                          <span className="mx-4">{i}</span>
+                        </div>
+                      ))}
+                    </label>
+                    </div>
                   ))}
-                </ul>
+                </form>
               </div>
-              <div className="flex justify-end">
-                <button className="bg-orange-500 text-white px-4 py-2 rounded-lg shadow">
+              <div className="flex justify-end mt-2">
+                <button className="bg-[#ff4d00] text-white px-10 py-2 rounded-md shadow">
                   Check
                 </button>
               </div>
             </div>
 
-            {/* Tasks Section */}
             <div className="mb-6">
-              <h3 className="text-lg font-medium mb-4">Tasks:</h3>
-              <div className="bg-neutral-800 p-4 rounded-lg mb-4">
-                <ul className="list-disc pl-5">
-                  {tasks.map((task, index) => (
-                    <li key={index} className="mb-2">
-                      {task}
-                    </li>
+              <h3 className="text-xl font-bold mb-4 ml-4">Excercise :</h3>
+              <div className="bg-black py-4 px-10 rounded-2xl">
+                <form action="">                  
+                  {excercise.map((item) => (
+                    <div className="mb-7 w-full">
+                    <h2 className="font-mono text-xl my-2 text-[#ff4d00]">{item.task}</h2>
+                    <div className="flex items-center justify-between gap-7">
+                      <label className="w-full">
+                            <input type="text" placeholder="only single line code here . . " name="" className="bg-neutral-200 text-black h-12 px-4 rounded-md w-full"/>
+                      </label>
+                      <div className="">
+                        <button className="bg-[#ff4d00] text-white px-10 py-2 rounded-md shadow">
+                          Check
+                        </button>
+                      </div>
+                    </div>
+                    </div>
                   ))}
-                </ul>
-              </div>
-              <div className="flex justify-end">
-                <button className="bg-orange-500 text-white px-4 py-2 rounded-lg shadow">
-                  Check
-                </button>
+                </form>
               </div>
             </div>
 
-          
+            <div className="mb-6">
+              <h3 className="text-xl font-bold mb-4 ml-4">Resource :</h3>
+              <div className="bg-black py-4 px-10 rounded-2xl flex flex-col lg:flex-row items-center justify-around gap-5">
+                {resourse.map((item) => (
+                  <div className="w-full">
+                    <Link href={item.link}>
+                    <div className="bg-neutral-800 w-full py-10 rounded-md hover:bg-neutral-700 text-center">{item.type}</div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            {/* Submit Button */}
-            <div className="flex justify-end">
+            <div className="flex  justify-end">
               <button className="bg-orange-500 text-white px-6 py-2 rounded-lg shadow">
                 Submit
               </button>
