@@ -4,13 +4,13 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import Link from "next/link";
 
-export default function ProfileCard() {
+export default function ProfileCard({params}) {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [roadmap, setRoadmap] = useState([""]);
   
   useEffect(()=> {
-    axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/userProfile/66f9b12c4d80656ea2c06cdd`, {  
+    axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/userProfile/`, {  
       headers: { 
         "authorization" : localStorage.getItem("jwtToken") 
       }
@@ -33,10 +33,14 @@ export default function ProfileCard() {
       <Card className="w-full h-full bg-neutral-800 max-w-9xl mx-auto overflow-hidden">
         <div className="flex flex-col md:flex-row items-center justify-between bg-neutral-800 h-1/2">
           <div className="text-white text-base font-light mx-16 mt-7">
-            {/* {user.map((item, index)=>(
-            ))} */}
+            <Link href={`/newRoadmap/${params.userId}`}>
+              <button 
+              className="px-7 py-4 rounded-xl mb-10 border-2 border-[#ff4d00] hover:bg-[#ff4d00]">
+                New Roadmap
+              </button>
+            </Link>
             <h1>Name: <span className="text-[#ff4d00]">{name}</span></h1>
-            <h1>Name: <span className="text-[#ff4d00]">{email}</span></h1>
+            <h1>Email: <span className="text-[#ff4d00]">{email}</span></h1>
           </div>
           <div className="my-10 md:my-7">
             <div className="w-40 h-40 rounded-full bg-[#ff4d00] border-4 mx-16">
