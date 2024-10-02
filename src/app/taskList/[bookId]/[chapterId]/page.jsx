@@ -50,12 +50,12 @@ const TaskListPage = ({params}) => {
                   <div className=" flex items-center justify-end w-2/6 text-sm md:text-base">
                     {index < currentTask ? (
                       // <button className="bg-gray-800 px-5 py-2 rounded-md text-white">
-                      <Link href={`/task/${taskId[index]}`} className="bg-neutral-700  px-7 py-2 rounded-md text-white">                      
+                      <Link href={`/task/${params.bookId}/${params.chapterId}/${taskId[index]}`} className="bg-neutral-700  px-7 py-2 rounded-md text-white">                      
                         Completed
                       </Link>
                     ) : index === currentTask ? (
                       // <button className="bg-green-600 px-7 py-2 rounded-md text-white">
-                      <Link href={`/task/${taskId[index]}`} className="bg-green-600  px-7 py-2 rounded-md text-white">                      
+                      <Link href={`/task/${params.bookId}/${params.chapterId}/${taskId[index]}`} className="bg-green-600  px-7 py-2 rounded-md text-white">                      
                         Current
                       </Link>
                       // </button>

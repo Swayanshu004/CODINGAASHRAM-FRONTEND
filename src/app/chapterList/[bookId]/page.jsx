@@ -51,12 +51,12 @@ const chapterListPage = ({params}) => {
                 <div className=" flex items-center justify-end w-2/6 text-sm md:text-base">
                     {index < currentChapter ? (
                       // <button className="bg-gray-800 px-5 py-2 rounded-md text-white">
-                      <Link href={`/taskList/${book.chapters[index]}`} className="bg-neutral-700  px-7 py-2 rounded-md text-white">                      
+                      <Link href={`/taskList/${params.bookId}/${book.chapters[index]}`} className="bg-neutral-700  px-7 py-2 rounded-md text-white">                      
                         Completed
                       </Link>
                     ) : index === currentChapter ? (
                       // <button className="bg-green-600 px-7 py-2 rounded-md text-white">
-                      <Link href={`/taskList/${book.chapters[index]}`} className="bg-green-600  px-7 py-2 rounded-md text-white">                      
+                      <Link href={`/taskList/${params.bookId}/${book.chapters[index]}`} className="bg-green-600  px-7 py-2 rounded-md text-white">                      
                         Current
                       </Link>
                       // </button>
