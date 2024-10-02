@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 import "./images/CODINGAASHRAM-preview-dark.png"
 import "./images/CODINGAASHRAM-preview-light.png"
@@ -27,12 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

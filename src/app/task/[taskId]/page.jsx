@@ -213,7 +213,7 @@ const TaskPage = () => {
       <div className="w-full bg-neutral-900 rounded-lg shadow-lg flex flex-col h-full">
         <div className="flex flex-col overflow-hidden w-full">
           <div
-            className="w-screen bg-neutral-900 py-4 px-10 flex flex-col justify-end items-end overflow-hidden"
+            className="w-screen bg-neutral-900 py-4 px-10 flex flex-col justify-end items-center md:items-end overflow-hidden"
           >
             <div className="flex items-center space-x-4 w-fit">
               <button
@@ -257,11 +257,15 @@ const TaskPage = () => {
               <div className="bg-black py-4 px-10 rounded-2xl">
                 <form action="">                  
                   {questions.map((item, index) => (
-                    <div className="mb-7">
+                    <div
+                    key={index}
+                    className="mb-7">
                     <h2 className="font-mono text-xl my-2 text-[#ff4d00]">{item.question}</h2>
                     <label>
-                      {item.options.map((i)=>(
-                        <div className="my-1">
+                      {item.options.map((i,index)=>(
+                        <div 
+                        key={index}
+                        className="my-1">
                           <input type="radio" name="question0" value={i} className="text-black"/>
                           <span className="mx-4">{i}</span>
                         </div>
@@ -282,10 +286,12 @@ const TaskPage = () => {
               <h3 className="text-xl font-bold mb-4 ml-4">Excercise :</h3>
               <div className="bg-black py-4 px-10 rounded-2xl">
                 <form action="">                  
-                  {excercise.map((item) => (
-                    <div className="mb-7 w-full">
+                  {excercise.map((item, index) => (
+                    <div 
+                    key={index}
+                    className="mb-7 w-full">
                     <h2 className="font-mono text-xl my-2 text-[#ff4d00]">{item.task}</h2>
-                    <div className="flex items-center justify-between gap-7">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-7">
                       <label className="w-full">
                             <input type="text" placeholder="only single line code here . . " name="" className="bg-neutral-200 text-black h-12 px-4 rounded-md w-full"/>
                       </label>
@@ -304,8 +310,10 @@ const TaskPage = () => {
             <div className="mb-6">
               <h3 className="text-xl font-bold mb-4 ml-4">Resource :</h3>
               <div className="bg-black py-4 px-10 rounded-2xl flex flex-col lg:flex-row items-center justify-around gap-5">
-                {resourse.map((item) => (
-                  <div className="w-full">
+                {resourse.map((item, index) => (
+                  <div 
+                  key={index}
+                  className="w-full">
                     <Link href={item.link}>
                     <div className="bg-neutral-800 w-full py-10 rounded-md hover:bg-neutral-700 text-center">{item.type}</div>
                     </Link>
