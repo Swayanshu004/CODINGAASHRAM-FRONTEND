@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import {cn} from "@/lib/utils.ts"
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import axios from "axios";
 
-function page({params}) {
+function Page() {
     const [data, setData] = useState({
         duration: 0,
         roles: [""],
@@ -42,14 +42,12 @@ function page({params}) {
         }console.log("Form Data Submitted:", data);
 
 
-        let res = {};
         axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/personalinfo`, data, {  
           headers: { 
             "authorization" : localStorage.getItem("jwtToken") 
           }
         })
         .then(async function (response) {
-          res = response;
           console.log("response - ",response);
           if(response.status === 201){
             setData({
@@ -315,4 +313,4 @@ const LabelInputContainer = ({children,className})=>{
   );
 };
 
-export default page
+export default Page

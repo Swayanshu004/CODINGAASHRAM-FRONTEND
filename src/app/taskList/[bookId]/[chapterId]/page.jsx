@@ -25,7 +25,7 @@ const TaskListPage = ({params}) => {
       }
     })
     .catch(err => console.error(err));
-  },[])
+  },[params.chapterId,])
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white relative">

@@ -31,7 +31,7 @@ const TaskPage = ({params}) => {
       }
     })
     .catch(err => console.error(err));
-  },[])
+  },[params.bookId,params.chapterId,params.taskId])
 
   const handleSubmitQuestion = (e) => {
     e.preventDefault();
@@ -182,9 +182,11 @@ const handleSubmitExercise = (e) => {
             </div>
 
             <div className="flex  justify-end">
-              <button className="bg-[#ff4d00] text-white px-6 py-2 rounded-lg shadow">
-                Submit
-              </button>
+              <Link href={"/"} className={`${questionCheck && exerciseCheck ? "" : "pointer-events-none"}`}>
+                <button className="bg-[#ff4d00] text-white px-6 py-2 rounded-lg shadow">
+                  Submit
+                </button>
+              </Link>
             </div>
           </div>
         </div>

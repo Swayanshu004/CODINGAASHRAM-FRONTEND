@@ -1,12 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 
-function page() {
+function Page() {
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -22,11 +22,8 @@ function page() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
-      let response = {};
       axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/signup`, data)
       .then(async function (response) {
-        response = response;
         console.log(response);
         if(response.status === 201){
           setData({
@@ -99,4 +96,4 @@ const LabelInputContainer = ({children,className})=>{
   );
 };
 
-export default page
+export default Page

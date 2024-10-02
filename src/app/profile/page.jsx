@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import Link from "next/link";
 
-export default function ProfileCard({params}) {
+export default function ProfileCard() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [roadmap, setRoadmap] = useState([""]);
@@ -27,13 +27,13 @@ export default function ProfileCard({params}) {
     })
     .catch(err => console.error(err));
     
-  },[])
+  })
   return (
     <div className="font-mono min-h-screen bg-black text-3xl font-semibold px-9 py-9">
       <Card className="w-full h-full bg-neutral-800 max-w-9xl mx-auto overflow-hidden">
         <div className="flex flex-col md:flex-row items-center justify-between bg-neutral-800 h-1/2">
           <div className="text-white text-base font-light mx-16 mt-7">
-            <Link href={`/newRoadmap/${params.userId}`}>
+            <Link href={`/newRoadmap/`}>
               <button 
               className="px-7 py-4 rounded-xl mb-10 border-2 border-[#ff4d00] hover:bg-[#ff4d00]">
                 New Roadmap
