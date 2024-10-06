@@ -8,7 +8,7 @@ export default function ProfileCard() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [roadmap, setRoadmap] = useState([""]);
-  console.log("backend URL :- ",process.env.NEXT_PUBLIC_BACKEND_URL)
+  
   useEffect(()=> {
     axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/userProfile/`, {  
       headers: { 
