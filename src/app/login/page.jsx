@@ -14,7 +14,7 @@ function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:7000/v1/user/login', formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/login`, formData);
       if (response.status === 201) {
         setFormData({ email: '', password: '' });
         localStorage.setItem('jwtToken', response.data.token);
