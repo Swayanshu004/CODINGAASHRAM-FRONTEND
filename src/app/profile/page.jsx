@@ -26,8 +26,7 @@ export default function ProfileCard() {
       }
     })
     .catch(err => console.error(err));
-    
-  })
+  },[])
   return (
     <div className="font-mono min-h-screen bg-black text-3xl font-semibold px-9 py-9">
       <Card className="w-full h-full bg-neutral-800 max-w-9xl mx-auto overflow-hidden">
