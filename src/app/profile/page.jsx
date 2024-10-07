@@ -15,9 +15,7 @@ export default function ProfileCard() {
         "authorization" : localStorage.getItem("jwtToken") 
       }
     })
-    .then(res => { 
-      console.log(res);
-      
+    .then(res => {    
       if (res.status === 201 && res.data.roadmaps && Array.isArray(res.data.roadmaps)) {
         setName(res.data.name);
         setEmail(res.data.email);
