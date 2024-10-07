@@ -6,6 +6,7 @@ import axios from 'axios';
 
 function Page() {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
