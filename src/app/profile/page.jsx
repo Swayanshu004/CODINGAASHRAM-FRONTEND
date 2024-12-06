@@ -15,9 +15,7 @@ export default function ProfileCard() {
         "authorization" : localStorage.getItem("jwtToken") 
       }
     })
-    .then(res => { 
-      console.log(res);
-      
+    .then(res => {    
       if (res.status === 201 && res.data.roadmaps && Array.isArray(res.data.roadmaps)) {
         setName(res.data.name);
         setEmail(res.data.email);
@@ -26,8 +24,7 @@ export default function ProfileCard() {
       }
     })
     .catch(err => console.error(err));
-    
-  })
+  },[])
   return (
     <div className="font-mono min-h-screen bg-black text-3xl font-semibold px-9 py-9">
       <Card className="w-full h-full bg-neutral-800 max-w-9xl mx-auto overflow-hidden">

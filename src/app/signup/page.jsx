@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { useRouter } from 'next/navigation'; 
 import axios from "axios";
 
 function Page() {
@@ -12,6 +12,8 @@ function Page() {
     email: "",
     password: "",
   })
+  const router = useRouter();
+  
   let ele ;
   const handleInput = (e) => {
     ele = e.target;
@@ -33,6 +35,7 @@ function Page() {
             })
           console.log(response.data.token);
           localStorage.setItem('jwtToken',response.data.token);
+          router.push("/profile");
           }
       })
       .catch(function (error) {
@@ -64,8 +67,7 @@ return (
         <LabelInputContainer className="mb-4">
         <Label htmlFor="password">Password*</Label>
         <Input name="password" onChange={handleInput} value={data.password} id="password" placeholder="••• •••" type="password" />
-        </LabelInputContainer>
-        <Link href={`/profile`} className={`${(!data.name && !data.email && !data.password) ? "pointer-events-none" : ""}`}>        
+        </LabelInputContainer>       
           <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
@@ -73,7 +75,6 @@ return (
           Register &rarr;
           <BottomGradient />
           </button>
-        </Link>
     </form>
     </div>
 </div>

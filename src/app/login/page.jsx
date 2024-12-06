@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
+import { useRouter } from 'next/navigation';
+// import Link from "next/link";
 import axios from 'axios';
 
 function Page() {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,10 +16,11 @@ function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:7000/v1/user/login', formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/login`, formData);
       if (response.status === 201) {
         setFormData({ email: '', password: '' });
         localStorage.setItem('jwtToken', response.data.token);
+        router.push("/profile");
       }
     } catch (error) {
       console.error(error);
@@ -59,14 +62,14 @@ function Page() {
               required
             />
           </div>
-          <Link href="/profile">
+{/*           <Link href="/profile"> */}
             <button
               type="submit"
               className={`bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] ${formData.email || formData.password ? '' : 'pointer-events-none'}`}
             >
               Register →
             </button>
-          </Link>
+{/*           </Link> */}
         </form>
       </div>
     </div>
