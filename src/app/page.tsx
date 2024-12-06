@@ -9,6 +9,10 @@ export default function Home() {
       <div className="w-screen h-screen bg-neutral-950 ">
       <p className="pt-40 px-10">
         Achieve Your Dream Tech Job with Personalized AI Guidance!
+        <br />
+        <p className="font-bold text-5xl">
+          - HERO SECTION COMING SOON - 
+        </p>
       </p>
       </div>
       <div className="w-screen h-full bg-neutral-950 overflow-hidden">
@@ -16,44 +20,44 @@ export default function Home() {
           <p className="text-lg font-mono font-thin">
             are you still using those generic roadmaps that have no idea about your skills. 
           </p>
-          <h2 className="text-5xl font-bold leading-snug ">We provide <span className="text-[#ff4d00]">Personalized Roadmap</span>,<br/>Just for You<br/>and Your :</h2>
-          <div className="w-full flex items-center gap-7 justify-around flex-wrap my-5">
+          <h2 className="text-3xl md:text-5xl font-bold leading-snug ">We provide <span className="text-[#ff4d00]">Personalized Roadmap</span>,<br/>Just for You<br/>and Your :</h2>
+          <div className="w-full flex items-center gap-2 md:gap-7 justify-around flex-wrap my-5">
             <MagicCard
-                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl py-10 w-1/5"
+                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/3 md:w-1/5"
                 gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
               >
                 Skills
               </MagicCard>
               <MagicCard
-                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl py-10 w-1/5"
+                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/2 md:w-1/5"
                 gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
               >
-                Goal
+                Achivement
               </MagicCard>
               <MagicCard
-                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl py-10 w-1/5"
+                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/2 md:w-1/5"
                 gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
               >
                 Requirement
               </MagicCard>
               <MagicCard
-                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl py-10 w-1/5"
+                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/3 md:w-1/5"
                 gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
               >
-                Achivement
+                Goal
               </MagicCard>
           </div>
         </div>
       </div>
       <div className="w-screen h-screen bg-neutral-950">
         <div className="w-full absolute z-10 p-16">
-          <h2 className="text-5xl font-semibold leading-snug ">study says,<br />Personalized roadmaps are <span className="font-bold text-[#ff4d00]">93%</span> more efficient that others.</h2>
+          <h2 className="text-3xl md:text-5xl font-semibold leading-snug ">study says,<br />Personalized roadmaps are <span className="font-bold text-[#ff4d00]">73%</span> more efficient that others.</h2>
           <p className="text-lg font-mono font-thin">
             Make a move towards smart learning.<br/>
           </p><br />
           <Link 
-              href={"/signup"}
-              className="px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Get Your Roadmap Now
+              href={"/signin"}
+              className="px-5 md:px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Get Your Roadmap Now
           </Link>
         </div>
         <FlickeringGrid
