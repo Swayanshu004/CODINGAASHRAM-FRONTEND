@@ -1,6 +1,9 @@
+import FlickeringGrid from "@/components/ui/flickering-grid";
+import { MagicCard } from "@/components/ui/magic-card";
 import Link from "next/link";
 
 export default function Home() {
+  const theme = "dark";
   return (
     <div className="min-h-screen text-white ">
       <div className="w-screen h-screen bg-neutral-950 ">
@@ -8,19 +11,61 @@ export default function Home() {
         Achieve Your Dream Tech Job with Personalized AI Guidance!
       </p>
       </div>
-      <div className="w-screen h-screen bg-neutral-900 p-10">
-        still using those generic roadmaps that have no idea about your skills. 
-        <h2 className="text-5xl font-bold leading-snug ">We provide Personalized Roadmap,<br/>Just for You.</h2>
+      <div className="w-screen h-full bg-neutral-950 overflow-hidden">
+        <div className="px-16 py-20">
+          <p className="text-lg font-mono font-thin">
+            are you still using those generic roadmaps that have no idea about your skills. 
+          </p>
+          <h2 className="text-5xl font-bold leading-snug ">We provide <span className="text-[#ff4d00]">Personalized Roadmap</span>,<br/>Just for You<br/>and Your :</h2>
+          <div className="w-full flex items-center gap-7 justify-around flex-wrap my-5">
+            <MagicCard
+                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl py-10 w-1/5"
+                gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
+              >
+                Skills
+              </MagicCard>
+              <MagicCard
+                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl py-10 w-1/5"
+                gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
+              >
+                Goal
+              </MagicCard>
+              <MagicCard
+                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl py-10 w-1/5"
+                gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
+              >
+                Requirement
+              </MagicCard>
+              <MagicCard
+                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl py-10 w-1/5"
+                gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
+              >
+                Achivement
+              </MagicCard>
+          </div>
+        </div>
       </div>
-      <div className="w-screen h-screen bg-neutral-950 p-10">
-        <h2 className="text-5xl font-semibold leading-snug ">study says,<br />Personalized roadmaps are <span className="font-bold text-[#ff4d00]">93%</span> more efficient that others.</h2>
-        <p>
-          Make a move towards smart learning.<br/>
-        </p><br />
-        <Link 
-            href={"/signup"}
-            className="px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Get Your Roadmap Now
-        </Link>
+      <div className="w-screen h-screen bg-neutral-950">
+        <div className="w-full absolute z-10 p-16">
+          <h2 className="text-5xl font-semibold leading-snug ">study says,<br />Personalized roadmaps are <span className="font-bold text-[#ff4d00]">93%</span> more efficient that others.</h2>
+          <p className="text-lg font-mono font-thin">
+            Make a move towards smart learning.<br/>
+          </p><br />
+          <Link 
+              href={"/signup"}
+              className="px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Get Your Roadmap Now
+          </Link>
+        </div>
+        <FlickeringGrid
+          className="z-0 absolute w-screen bg-black"
+          squareSize={100}
+          gridGap={2}
+          color="#ff4d00"
+          maxOpacity={0.2}
+          flickerChance={0.2}
+          height={800}
+          width={1920}
+        />
       </div>
       <div className="max-h-screen flex justify-center">
         <div className="my-40">
