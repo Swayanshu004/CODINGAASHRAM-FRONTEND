@@ -188,6 +188,7 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
           width: canvasSize.width,
           height: canvasSize.height,
         }}
+        // className="pointer-events-none w-screen h-screen"
       />
     </div>
   );

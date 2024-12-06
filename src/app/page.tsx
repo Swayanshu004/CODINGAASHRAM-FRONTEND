@@ -9,10 +9,9 @@ export default function Home() {
       <div className="w-screen h-screen bg-neutral-950 ">
       <p className="pt-40 px-10">
         Achieve Your Dream Tech Job with Personalized AI Guidance!
-        <br />
-        <p className="font-bold text-5xl">
-          - HERO SECTION COMING SOON - 
-        </p>
+      </p>
+      <p className="px-10 font-bold text-5xl">
+        - HERO SECTION COMING SOON - 
       </p>
       </div>
       <div className="w-screen h-full bg-neutral-950 overflow-hidden">
@@ -61,7 +60,7 @@ export default function Home() {
           </Link>
         </div>
         <FlickeringGrid
-          className="z-0 absolute w-screen bg-black"
+          className="z-0 absolute w-screen bg-black overflow-hidden"
           squareSize={100}
           gridGap={2}
           color="#ff4d00"
