@@ -67,7 +67,7 @@ export default function Home() {
           maxOpacity={0.2}
           flickerChance={0.2}
           height={800}
-          width={1920}
+          width={7000}
         />
       </div>
       <div className="max-h-screen flex justify-center">
