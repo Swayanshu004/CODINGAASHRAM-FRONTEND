@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Header.jsx", "src/components/ProgressBar.jsx", "src/app/layout.tsx", "src/app/page.tsx", "src/components/Footer.jsx", "src/app/task/[bookId]/[chapterId]/[taskId]/page.jsx", "src/app/signup/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Header.jsx", "src/components/ProgressBar.jsx", "src/app/layout.tsx", "src/app/page.tsx", "src/components/Footer.jsx", "src/app/task/[bookId]/[chapterId]/[taskId]/page.jsx", "src/app/signup/page.jsx", "src/components/ui/animated-list.tsx"],
   "exclude": ["node_modules"]
 }
