@@ -12,9 +12,14 @@ export default function Home() {
         <p className="md:w-1/2 font-mono mt-5">CodingAashram leverages AI to create personalized learning paths based on your current skills, guiding you to land your dream software development job.</p>
         </div>
         <div className="h-1/4 mx-10 my-5 rounded-xl flex gap-5">
-          <div className="h-full w-3/4 rounded-xl bg-neutral-300">
+          <div className="h-full w-3/4 rounded-xl bg-neutral-100">
           </div>
-          <div className="h-full w-1/4 rounded-xl bg-neutral-300">
+          <div className="h-full w-1/4 rounded-xl bg-neutral-500 p-5">
+            <ul className="">
+              <li className="text-white text-xl font-semibold text-right m-3">AI-Driven Roadmaps</li>
+              <li className="text-white text-xl font-semibold text-right m-3">Skill-Based Learning</li>
+              <li className="text-white text-xl font-semibold text-right m-3">Career-Ready Guidance</li>
+            </ul>
           </div>
         </div>
       </div>
