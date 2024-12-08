@@ -6,20 +6,24 @@ export default function Home() {
   const theme = "dark";
   return (
     <div className="min-h-screen text-white ">
-      <div className="w-screen h-screen bg-neutral-950 ">
-      <p className="pt-40 px-10">
-        Achieve Your Dream Tech Job with Personalized AI Guidance!
-      </p>
-      <p className="px-10 font-bold text-5xl">
-        - HERO SECTION COMING SOON - 
-      </p>
+      <div className="w-screen h-screen bg-netural-950">
+        <div className="h-1/2 mx-10 mt-28 rounded-xl bg-[#ff4d00] p-5">
+        <h2 className="w-2/6 text-5xl font-extrabold text-black">Master Coding with Personalized Learning Plans</h2>
+        <p className="md:w-1/2 font-mono mt-5">CodingAashram leverages AI to create personalized learning paths based on your current skills, guiding you to land your dream software development job.</p>
+        </div>
+        <div className="h-1/4 mx-10 my-5 rounded-xl flex gap-5">
+          <div className="h-full w-3/4 rounded-xl bg-neutral-300">
+          </div>
+          <div className="h-full w-1/4 rounded-xl bg-neutral-300">
+          </div>
+        </div>
       </div>
       <div className="w-screen h-full bg-neutral-950 overflow-hidden">
         <div className="px-16 py-20">
           <p className="text-lg font-mono font-thin">
             are you still using those generic roadmaps that have no idea about your skills. 
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold leading-snug ">We provide <span className="text-[#ff4d00]">Personalized Roadmap</span>,<br/>Just for You<br/>and Your :</h2>
+          <h2 className="text-3xl md:text-5xl font-bold leading-snug ">We provide <span className="text-[#ff4d00]">Personalized Roadmap</span>,<br/>Just for You<br/>According to Your :</h2>
           <div className="w-full flex items-center gap-2 md:gap-7 justify-around flex-wrap my-5">
             <MagicCard
                 className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/3 md:w-1/5"
@@ -56,7 +60,7 @@ export default function Home() {
           </p><br />
           <Link 
               href={"/signin"}
-              className="px-5 md:px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Get Your Roadmap Now
+              className="px-5 md:px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Discover Your Path
           </Link>
         </div>
         <FlickeringGrid
