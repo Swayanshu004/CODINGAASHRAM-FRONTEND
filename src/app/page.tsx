@@ -1,4 +1,5 @@
-import FlickeringGrid from "@/components/ui/flickering-grid";
+import Marquee from "@/components/ui/marquee";
+import Particles from "@/components/ui/particles";
 import { MagicCard } from "@/components/ui/magic-card";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { cn } from "@/lib/utils";
@@ -34,6 +35,47 @@ export default function Home() {
       color: "#FF2E00",
     },
   ];
+  const reviews = [
+    {
+      name: "Someone",
+      username: "CS student",
+      body: "I've never seen anything like this before. It's amazing. I love it.",
+      img: "https://avatar.vercel.sh/jack",
+    },
+    {
+      name: "Someone",
+      username: "Assistant Prof.",
+      body: "I don't know what to say. I'm speechless. This is amazing.",
+      img: "https://avatar.vercel.sh/jill",
+    },
+    {
+      name: "Someone",
+      username: "CS Student",
+      body: "I'm at a loss for words. This is amazing. I love it.",
+      img: "https://avatar.vercel.sh/john",
+    },
+    {
+      name: "Someone",
+      username: "Parents",
+      body: "I'm at a loss for words. This is amazing. I love it.",
+      img: "https://avatar.vercel.sh/jane",
+    },
+    {
+      name: "Someone",
+      username: "Assistant Prof.",
+      body: "I'm at a loss for words. This is amazing. I love it.",
+      img: "https://avatar.vercel.sh/jenny",
+    },
+    {
+      name: "Someone",
+      username: "CS student",
+      body: "I'm at a loss for words. This is amazing. I love it.",
+      img: "https://avatar.vercel.sh/james",
+    },
+  ];
+   
+  const firstRow = reviews.slice(0, reviews.length / 2);
+  const secondRow = reviews.slice(reviews.length / 2);
    
   notifications = Array.from({ length: 77 }, () => notifications).flat();
   const Notification = ({ name, icon, color }: Item) => {
@@ -66,13 +108,48 @@ export default function Home() {
     );
   };
 
+  const ReviewCard = ({
+    img,
+    name,
+    username,
+    body,
+  }: {
+    img: string;
+    name: string;
+    username: string;
+    body: string;
+  }) => {
+    return (
+      <figure
+        className={cn(
+          "relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+          // light styles
+          "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+          // dark styles
+          "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+        )}
+      >
+        <div className="flex flex-row items-center gap-2">
+          <img className="rounded-full" width="32" height="32" alt="" src={img} />
+          <div className="flex flex-col">
+            <figcaption className="text-sm font-medium dark:text-white">
+              {name}
+            </figcaption>
+            <p className="text-xs font-medium dark:text-white/40">{username}</p>
+          </div>
+        </div>
+        <blockquote className="mt-2 text-sm">{body}</blockquote>
+      </figure>
+    );
+  };
+
   return (
     <div className="min-h-screen text-white ">
       <div className="w-screen h-screen bg-netural-950">
         <div className="h-fit mx-10 mt-28 rounded-xl bg-[#ff4d00] py-7 px-5 flex">
           <div>
             <h2 className="w-full md:w-2/6 text-4xl md:text-5xl font-extrabold text-black">Master Coding with Personalized Learning Plans</h2>
-            <p className="md:w-1/2 font-mono mt-5">CodingAashram leverages AI to create personalized learning paths based on your current skills, guiding you to land your dream software development job.</p>
+            <p className="md:w-1/2 font-mono mt-5"><b>CodingAashram</b> leverages AI to create personalized learning paths based on your current skills, guiding you to land your dream software development job.</p>
           </div>
           <div></div>
         </div>
@@ -92,7 +169,14 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-screen h-full bg-neutral-950 overflow-hidden">
+      <div className="w-screen h-full bg-neutral-950 overflow-hidden relative">
+        <Particles
+          className="absolute inset-0"
+          quantity={300}
+          ease={80}
+          color={"#ff4d00"}
+          refresh
+        />
         <div className="px-16 py-20">
           <p className="text-lg font-mono font-thin">
             are you still using those generic roadmaps that have no idea about your skills. 
@@ -126,8 +210,15 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-screen h-screen bg-neutral-950">
-        <div className="w-full absolute z-10 p-16">
+      <div className="w-screen h-screen bg-neutral-950 relative">
+        <Particles
+          className="absolute inset-0"
+          quantity={500}
+          ease={80}
+          color={"#ff4d00"}
+          refresh
+        />
+        <div className="w-full px-16 py-5">
           <h2 className="text-3xl md:text-5xl font-semibold leading-snug ">study says,<br />Personalized roadmaps are <span className="font-bold text-[#ff4d00]">73%</span> more efficient that others.</h2>
           <p className="text-lg font-mono font-thin">
             Make a move towards smart learning.<br/>
@@ -137,16 +228,20 @@ export default function Home() {
               className="px-5 md:px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Discover Your Path
           </Link>
         </div>
-        <FlickeringGrid
-          className="z-0 absolute w-screen bg-black overflow-hidden"
-          squareSize={100}
-          gridGap={2}
-          color="#ff4d00"
-          maxOpacity={0.2}
-          flickerChance={0.2}
-          height={800}
-          width={7000}
-        />
+        <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg md:shadow-xl">
+          <Marquee pauseOnHover className="[--duration:20s]">
+            {firstRow.map((review) => (
+              <ReviewCard key={review.username} {...review} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover className="[--duration:20s]">
+            {secondRow.map((review) => (
+              <ReviewCard key={review.username} {...review} />
+            ))}
+          </Marquee>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+        </div>
       </div>
       <div className="max-h-screen flex justify-center">
         <div className="my-40">
