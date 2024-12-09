@@ -15,22 +15,22 @@ export default function Home() {
   let notifications = [
     {
       name: "Skill-Based Learning",
-      icon: "💬",
+      icon: "🎓",
       color: "#FFA800",
     },
     {
       name: "Career-Ready Guidance",
-      icon: "👤",
+      icon: "🎖️",
       color: "#FF6624",
     },
     {
       name: "Tailored for You",
-      icon: "💬",
+      icon: "✨",
       color: "#ff4d00",
     },
     {
       name: "AI-Driven Roadmaps",
-      icon: "💸",
+      icon: "🎯",
       color: "#FF2E00",
     },
   ];
@@ -53,7 +53,7 @@ export default function Home() {
               backgroundColor: color,
             }}
           >
-            <span className="text-lg">{icon}</span>
+            <span className="text-xl">{icon}</span>
           </div>
           <div className="flex flex-col overflow-hidden">
             <figcaption className="flex flex-row items-center whitespace-pre text-lg font-medium dark:text-white ">
