@@ -35,7 +35,7 @@ export default function Home() {
     },
   ];
    
-  notifications = Array.from({ length: 700 }, () => notifications).flat();
+  notifications = Array.from({ length: 77 }, () => notifications).flat();
   const Notification = ({ name, icon, color }: Item) => {
     return (
       <figure
