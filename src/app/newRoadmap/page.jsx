@@ -61,9 +61,12 @@ function Page() {
           companies: [""],
           priorKnowledges: [{ skill: "", level: "" }],
         });
+        setLoad(false);
+        router.push("/profile");
+      } else {
+        console.log("Noy yet received");
       }
-      setLoad(false);
-      router.push("/profile");
+      
     })
     .catch(function (error) {
       console.log(error);
