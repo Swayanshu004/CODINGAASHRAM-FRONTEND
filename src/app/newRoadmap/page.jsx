@@ -4,117 +4,123 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import {cn} from "@/lib/utils.ts"
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import axios from "axios";
+import Loader from "@/components/Loader";
 
 function Page() {
-    const [data, setData] = useState({
-        duration: 0,
-        roles: [""],
-        companies: [""],
-        priorKnowledges: [
-          {
-            skill: "",
-            level: "",
-          },
-        ],
-    });
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (data.duration <= 0) {
-          alert("Duration must be greater than 0.");
-          return;
-        }
-      
-        if (data.roles.some(role => role === "")) {
-          alert("Please select a role for each entry.");
-          return;
-        }
-      
-        if (data.companies.some(company => company === "")) {
-          alert("Please select a company for each entry.");
-          return;
-        }
-      
-        if (data.priorKnowledges.some(pk => pk.skill === "" || pk.level === "")) {
-          alert("Please fill out all prior knowledge fields.");
-          return;
-        }console.log("Form Data Submitted:", data);
-
-
-        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/personalinfo`, data, {  
-          headers: { 
-            "authorization" : localStorage.getItem("jwtToken") 
-          }
-        })
-        .then(async function (response) {
-          console.log("response - ",response);
-          if(response.status === 201){
-            setData({
-                duration: 0,
-                roles: [""],
-                companies: [""],
-                priorKnowledges: [{ skill: "", level: "" }],
-            });
-          }
-
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      
-        
-      };
-      
-    const handleInput = (e) => {
-        const { name, value } = e.target;
-      
-        // Update duration field
-        if (name === "duration") {
-          setData({ ...data, [name]: value });
-        }
-      };
-      
-      const handleRoleChange = (index, value) => {
-        const newRoles = [...data.roles];
-        newRoles[index] = value;
-        setData({ ...data, roles: newRoles });
-      };
-      
-      const handleCompanyChange = (index, value) => {
-        const newCompanies = [...data.companies];
-        newCompanies[index] = value;
-        setData({ ...data, companies: newCompanies });
-      };
-      
-      const handleSkillChange = (index, value) => {
-        const newPriorKnowledges = [...data.priorKnowledges];
-        newPriorKnowledges[index].skill = value;
-        setData({ ...data, priorKnowledges: newPriorKnowledges });
-      };
-      
-      const handleLevelChange = (index, value) => {
-        const newPriorKnowledges = [...data.priorKnowledges];
-        newPriorKnowledges[index].level = value;
-        setData({ ...data, priorKnowledges: newPriorKnowledges });
-      };
-      
-      const addRole = () => {
-        setData({ ...data, roles: [...data.roles, ""] });
-      };
-      
-      const addCompany = () => {
-        setData({ ...data, companies: [...data.companies, ""] });
-      };
-      
-      const addPriorKnowledge = () => {
+  const [load, setLoad] = useState(false);
+  const router = useRouter();
+  const [data, setData] = useState({
+    duration: 0,
+    roles: [""],
+    companies: [""],
+    priorKnowledges: [
+      {
+        skill: "",
+        level: "",
+      },
+    ],
+  });
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoad(true);
+    if (data.duration <= 0) {
+      alert("Duration must be greater than 0.");
+      return;
+    }
+    
+    if (data.roles.some(role => role === "")) {
+      alert("Please select a role for each entry.");
+      return;
+    }
+    
+    if (data.companies.some(company => company === "")) {
+      alert("Please select a company for each entry.");
+      return;
+    }
+  
+    if (data.priorKnowledges.some(pk => pk.skill === "" || pk.level === "")) {
+      alert("Please fill out all prior knowledge fields.");
+      return;
+    }console.log("Form Data Submitted:", data);
+    
+    
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/personalinfo`, data, {  
+      headers: { 
+        "authorization" : localStorage.getItem("jwtToken") 
+      }
+    })
+    .then(async function (response) {
+      console.log("response - ",response);
+      if(response.status === 201){
         setData({
-          ...data,
-          priorKnowledges: [...data.priorKnowledges, { skill: "", level: "" }],
+          duration: 0,
+          roles: [""],
+          companies: [""],
+          priorKnowledges: [{ skill: "", level: "" }],
         });
-      };
-return (
-<div className="w-screen my-20 flex items-center justify-center">
+      }
+      setLoad(false);
+      router.push("/profile");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
+    
+  };
+  
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    
+    // Update duration field
+    if (name === "duration") {
+      setData({ ...data, [name]: value });
+    }
+  };
+  
+  const handleRoleChange = (index, value) => {
+    const newRoles = [...data.roles];
+    newRoles[index] = value;
+    setData({ ...data, roles: newRoles });
+  };
+  
+  const handleCompanyChange = (index, value) => {
+    const newCompanies = [...data.companies];
+    newCompanies[index] = value;
+    setData({ ...data, companies: newCompanies });
+  };
+  
+  const handleSkillChange = (index, value) => {
+    const newPriorKnowledges = [...data.priorKnowledges];
+    newPriorKnowledges[index].skill = value;
+    setData({ ...data, priorKnowledges: newPriorKnowledges });
+  };
+  
+  const handleLevelChange = (index, value) => {
+    const newPriorKnowledges = [...data.priorKnowledges];
+    newPriorKnowledges[index].level = value;
+    setData({ ...data, priorKnowledges: newPriorKnowledges });
+  };
+  
+  const addRole = () => {
+    setData({ ...data, roles: [...data.roles, ""] });
+  };
+  
+  const addCompany = () => {
+    setData({ ...data, companies: [...data.companies, ""] });
+  };
+  
+  const addPriorKnowledge = () => {
+    setData({
+      ...data,
+      priorKnowledges: [...data.priorKnowledges, { skill: "", level: "" }],
+    });
+  };
+  return (
+    <div className="w-screen my-20 flex items-center justify-center">
     <div className="bg-neutral-950 max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
     <h2 className="font-bold text-3xl text-neutral-400">
         Welcome to <span className="text-white">coding<span className="text-[#FF4D00]">आश्रम</span></span>
@@ -140,10 +146,10 @@ return (
         </LabelInputContainer>
 
         {data.roles.map((role, index) => (
-            <div
-            key={index}
-            className="w-full flex flex-col items-center justify-between md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4"
-            >
+          <div
+          key={index}
+          className="w-full flex flex-col items-center justify-between md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4"
+          >
             <LabelInputContainer className="mb-4">
                 <Label htmlFor="roles">Roles*</Label>
                 <select
@@ -152,11 +158,11 @@ return (
                 value={role}
                 id="roles"
                 className="flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm  file:border-0 file:bg-transparent 
-          file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
-          focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-violet-700 dark:focus-visible:ring-violet-700
-           disabled:cursor-not-allowed disabled:opacity-50
-           dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
-           group-hover/input:shadow-none transition duration-400"
+                file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-violet-700 dark:focus-visible:ring-violet-700
+                disabled:cursor-not-allowed disabled:opacity-50
+                dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                group-hover/input:shadow-none transition duration-400"
                 >
                 <option disabled value="">
                     Select a Role
@@ -172,17 +178,17 @@ return (
                 type="button"
                 className="w-1/5 bg-[#ff4d00] rounded-lg flex items-center justify-center"
                 onClick={addRole}
-            >
+                >
                 <p className="text-3xl">+</p>
             </button>
             </div>
         ))}
 
         {data.companies.map((company, index) => (
-            <div
-            key={index}
-            className="w-full flex flex-col items-center justify-between md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4"
-            >
+          <div
+          key={index}
+          className="w-full flex flex-col items-center justify-between md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4"
+          >
             <LabelInputContainer className="mb-4">
                 <Label htmlFor="companies">Companies*</Label>
                 <select
@@ -191,11 +197,11 @@ return (
                 value={company}
                 id="companies"
                 className="flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm  file:border-0 file:bg-transparent 
-          file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
-          focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-violet-700 dark:focus-visible:ring-violet-700
-           disabled:cursor-not-allowed disabled:opacity-50
-           dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
-           group-hover/input:shadow-none transition duration-400"
+                file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-violet-700 dark:focus-visible:ring-violet-700
+                disabled:cursor-not-allowed disabled:opacity-50
+                dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                group-hover/input:shadow-none transition duration-400"
                 >
                 <option disabled value="">
                     Select a Company
@@ -212,17 +218,17 @@ return (
                 type="button"
                 className="w-1/5 bg-[#ff4d00] rounded-lg flex items-center justify-center"
                 onClick={addCompany}
-            >
+                >
                 <p className="text-3xl">+</p>
             </button>
             </div>
         ))}
 
         {data.priorKnowledges.map((priorKnowledge, index) => (
-            <div
-            key={index}
-            className="w-full flex flex-col items-center justify-between md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4"
-            >
+          <div
+          key={index}
+          className="w-full flex flex-col items-center justify-between md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4"
+          >
             <div className="w-4/5">
                 <LabelInputContainer className="mb-4">
                 <Label htmlFor="skill">Skill*</Label>
@@ -232,11 +238,11 @@ return (
                     value={priorKnowledge.skill}
                     id="skill"
                     className="flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm  file:border-0 file:bg-transparent 
-          file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
-          focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-violet-700 dark:focus-visible:ring-violet-700
-           disabled:cursor-not-allowed disabled:opacity-50
-           dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
-           group-hover/input:shadow-none transition duration-400"
+                    file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                    focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-violet-700 dark:focus-visible:ring-violet-700
+                    disabled:cursor-not-allowed disabled:opacity-50
+                    dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                    group-hover/input:shadow-none transition duration-400"
                 >
                     <option disabled value="">
                     Select a Skill
@@ -257,12 +263,12 @@ return (
                     value={priorKnowledge.level}
                     id="level"
                     className="flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm  file:border-0 file:bg-transparent 
-          file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
-          focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-violet-700 dark:focus-visible:ring-violet-700
-           disabled:cursor-not-allowed disabled:opacity-50
-           dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                    file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                    focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-violet-700 dark:focus-visible:ring-violet-700
+                    disabled:cursor-not-allowed disabled:opacity-50
+                    dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
            group-hover/input:shadow-none transition duration-400"
-                >
+           >
                     <option disabled value="">
                     Select a Level
                     </option>
@@ -277,7 +283,7 @@ return (
                 type="button"
                 className="w-1/5 py-10 bg-[#ff4d00] rounded-lg flex items-center justify-center"
                 onClick={addPriorKnowledge}
-            >
+                >
                 <p className="text-3xl">+</p>
             </button>
             </div>
@@ -287,7 +293,11 @@ return (
           className={`bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]`}
           type="submit"
           >
-          Create Roadmap  &rarr;
+            {
+              load ?
+              <Loader/> :
+              <div>Create Roadmap  &rarr;</div>
+            }
           <BottomGradient />
           </button>
         </Link>

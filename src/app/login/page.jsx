@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
-// import Link from "next/link";
+import Loader from "@/components/Loader";
 import axios from 'axios';
 
 function Page() {
+  const [load, setLoad] = useState(false);
   const [formData, setFormData] = useState({ email: '', password: '' });
   const router = useRouter();
 
@@ -15,11 +16,13 @@ function Page() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoad(true);
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/login`, formData);
       if (response.status === 201) {
         setFormData({ email: '', password: '' });
         localStorage.setItem('jwtToken', response.data.token);
+        setLoad(false);
         router.push("/profile");
       }
     } catch (error) {
@@ -28,7 +31,7 @@ function Page() {
   };
 
   return (
-    <div className="w-screen my-20 flex items-center justify-center">
+    <div className="w-screen flex items-center justify-center">
       <div className="bg-neutral-950 max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
         <h2 className="font-bold text-3xl text-neutral-400">
           Welcome to <span className="text-white">coding<span className="text-[#FF4D00]">आश्रम</span></span>
@@ -47,7 +50,7 @@ function Page() {
               type="email"
               className="bg-neutral-200 text-black h-12 px-4 rounded-md w-full"
               required
-            />
+              />
           </div>
           <div className="mb-4">
             <label htmlFor="password">Password*</label>
@@ -60,16 +63,18 @@ function Page() {
               type="password"
               className="bg-neutral-200 text-black h-12 px-4 rounded-md w-full"
               required
-            />
+              />
           </div>
-{/*           <Link href="/profile"> */}
             <button
               type="submit"
               className={`bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] ${formData.email || formData.password ? '' : 'pointer-events-none'}`}
             >
-              Register →
+              {
+                load ?
+                <Loader/> :
+                <div>Register →</div>
+              }
             </button>
-{/*           </Link> */}
         </form>
       </div>
     </div>

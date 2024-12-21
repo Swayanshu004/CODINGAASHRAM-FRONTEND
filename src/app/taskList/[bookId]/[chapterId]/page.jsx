@@ -3,9 +3,12 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { Card, CardContent } from "@/components/ui/card";
+import Loader from "@/components/Loader";
+
 
 
 const TaskListPage = ({params}) => {
+  const [load, setLoad] = useState(true);
   const [tasks, setTasks] = useState([]);
   const [taskId, setTaskId] = useState([]);
   const [currentTask, setCurrentTask] = useState();
@@ -17,11 +20,11 @@ const TaskListPage = ({params}) => {
       }
     })
     .then(res => { 
-      
       if (res.data.subtopicNames && Array.isArray(res.data.subtopicNames) && Array.isArray(res.data.tasks)) {
         setTasks(res.data.subtopicNames);
         setCurrentTask(res.data.currentTask);
-        setTaskId(res.data.tasks)
+        setTaskId(res.data.tasks);
+        setLoad(false);
       }
     })
     .catch(err => console.error(err));
@@ -31,6 +34,9 @@ const TaskListPage = ({params}) => {
     <div className="min-h-screen flex flex-col bg-black text-white relative">
       <div className="flex-grow container mx-auto p-4">
       <h1 className="text-2xl font-semibold text-center">Task List :</h1>
+      {
+        load ?
+        <Loader/> :
         <div className="w-full md:w-5/6 mx-auto">
           {tasks.map((task,index) => (
             <Card
@@ -72,6 +78,7 @@ const TaskListPage = ({params}) => {
             </Card>
           ))}
         </div>
+      }
       </div>
     </div>
   );

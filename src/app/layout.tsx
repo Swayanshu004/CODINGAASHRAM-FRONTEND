@@ -35,8 +35,12 @@ export default function RootLayout({
         <div className="w-screen top-0 fixed z-10">
           <Header />
         </div>
-        {children}
-        <Footer />
+        <div className="my-28">
+          {children}
+        </div>
+        <div className="w-screen fixed bottom-0 left-0">
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -5,8 +5,10 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useRouter } from 'next/navigation'; 
 import axios from "axios";
+import Loader from "@/components/Loader";
 
 function Page() {
+  const [load, setLoad] = useState(false);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -24,26 +26,28 @@ function Page() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-      axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/signup`, data)
-      .then(async function (response) {
-        console.log(response);
-        if(response.status === 201){
-          setData({
-              name: "",
-              email: "",
-              password: "",
-            })
-          console.log(response.data.token);
-          localStorage.setItem('jwtToken',response.data.token);
-          router.push("/profile");
-          }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    setLoad(true);
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/signup`, data)
+    .then(async function (response) {
+      console.log(response);
+      if(response.status === 201){
+        setData({
+          name: "",
+          email: "",
+          password: "",
+        })
+        console.log(response.data.token);
+        localStorage.setItem('jwtToken',response.data.token);
+        setLoad(false);
+        router.push("/profile");
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   };
-return (
-<div className="w-screen my-20 flex items-center justify-center">
+  return (
+    <div className="w-screen my-20 flex items-center justify-center">
     <div className="bg-neutral-950 max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
     <h2 className="font-bold text-3xl text-neutral-400">
         Welcome to <span className="text-white">coding<span className="text-[#FF4D00]">आश्रम</span></span>
@@ -72,7 +76,11 @@ return (
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
           >
-          Register &rarr;
+            {
+              load ?
+              <Loader/> :
+              <div>Register &rarr;</div>
+            }
           <BottomGradient />
           </button>
     </form>
