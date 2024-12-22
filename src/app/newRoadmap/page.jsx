@@ -27,26 +27,23 @@ function Page() {
     e.preventDefault();
     setLoad(true);
     if (data.duration <= 0) {
-      alert("Duration must be greater than 0.");
+      console.log("Duration must be greater than 0.");
       return;
-    }
-    
+    }  
     if (data.roles.some(role => role === "")) {
-      alert("Please select a role for each entry.");
+      console.log("Please select a role for each entry.");
       return;
     }
-    
     if (data.companies.some(company => company === "")) {
-      alert("Please select a company for each entry.");
+      console.log("Please select a company for each entry.");
       return;
     }
-  
     if (data.priorKnowledges.some(pk => pk.skill === "" || pk.level === "")) {
-      alert("Please fill out all prior knowledge fields.");
+      console.log("Please fill out all prior knowledge fields.");
       return;
-    }console.log("Form Data Submitted:", data);
-    
-    
+    }
+
+    console.log("Form Data Submitted:", data);
     axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/personalinfo`, data, {  
       headers: { 
         "authorization" : localStorage.getItem("jwtToken") 
@@ -290,11 +287,11 @@ function Page() {
                 <p className="text-3xl">+</p>
             </button>
             </div>
-        ))}
-        <Link href={`/profile`} className={`${data.duration && data.companies && data.roles && data.priorKnowledges ? "" : "pointer-events-none"}`}>        
+        ))}       
           <button
           className={`bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]`}
           type="submit"
+          onSubmit={handleSubmit}
           >
             {
               load ?
@@ -303,7 +300,6 @@ function Page() {
             }
           <BottomGradient />
           </button>
-        </Link>
     </form>
 
     </div>
