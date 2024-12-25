@@ -120,7 +120,7 @@ function Page() {
     });
   };
   return (
-    <div className="w-screen my-20 flex items-center justify-center">
+    <div className="w-screen my-20 flex flex-col items-center justify-center">
     <div className="bg-neutral-950 max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
     <h2 className="font-bold text-3xl text-neutral-400">
         Welcome to <span className="text-white">coding<span className="text-[#FF4D00]">आश्रम</span></span>
@@ -301,7 +301,10 @@ function Page() {
           <BottomGradient />
           </button>
     </form>
-
+    </div>
+    <div className=" bg-red-950 p-5 rounded-xl w-4/6 my-10 border-2 border-red-500">
+      <p className="text-neutral-300 tracking-[1.3px]">🔶 We're actively working on adding more personalization to this section to better align with4your unique goals and skill sets.</p>
+      <p className="text-neutral-300 tracking-[1.3px]">🔶 Explore this <span className="text-[#ff4d00] font-bold tracking-[2px]">BETA</span> version, share your valuable feedback, and stay tuned for <span className="text-[#ff4d00] font-bold tracking-[2px]">Version-1</span> Update : it's going to be worth the wait!</p>
     </div>
 </div>
 )
