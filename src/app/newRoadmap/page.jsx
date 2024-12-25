@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import {cn} from "@/lib/utils.ts"
-import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import axios from "axios";
 import Loader from "@/components/Loader";
@@ -303,8 +302,8 @@ function Page() {
     </form>
     </div>
     <div className=" bg-red-950 p-5 rounded-xl w-4/6 my-10 border-2 border-red-500">
-      <p className="text-neutral-300 tracking-[1.3px]">🔶 We're actively working on adding more personalization to this section to better align with4your unique goals and skill sets.</p>
-      <p className="text-neutral-300 tracking-[1.3px]">🔶 Explore this <span className="text-[#ff4d00] font-bold tracking-[2px]">BETA</span> version, share your valuable feedback, and stay tuned for <span className="text-[#ff4d00] font-bold tracking-[2px]">Version-1</span> Update : it's going to be worth the wait!</p>
+      <p className="text-neutral-300 tracking-[1.3px]">🔶 We are actively working on adding more personalization to this section to better align with4your unique goals and skill sets.</p>
+      <p className="text-neutral-300 tracking-[1.3px]">🔶 Explore this <span className="text-[#ff4d00] font-bold tracking-[2px]">BETA</span> version, share your valuable feedback, and stay tuned for <span className="text-[#ff4d00] font-bold tracking-[2px]">Version-1</span> Update : it is going to be worth the wait!</p>
     </div>
 </div>
 )
