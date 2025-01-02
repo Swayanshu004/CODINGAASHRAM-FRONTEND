@@ -2,6 +2,7 @@ import Marquee from "@/components/ui/marquee";
 import Particles from "@/components/ui/particles";
 import { MagicCard } from "@/components/ui/magic-card";
 import { AnimatedList } from "@/components/ui/animated-list";
+import { IoIosArrowRoundDown } from "react-icons/io";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -166,6 +167,11 @@ export default function Home() {
                   <Notification {...item} key={idx} />
                 ))}
               </AnimatedList>
+          </div>
+        </div>
+        <div className="w-full flex items-center justify-center text-7xl">
+          <div className="border-[1px] border-[#ff4d00] rounded-full p-3 mt-5 ">
+            <IoIosArrowRoundDown className="duration-75 hover:translate-y-2"/>
           </div>
         </div>
       </div>
