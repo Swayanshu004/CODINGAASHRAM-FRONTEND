@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Marquee from "@/components/ui/marquee";
 import Particles from "@/components/ui/particles";
 import { MagicCard } from "@/components/ui/magic-card";
@@ -78,7 +79,7 @@ export default function Home() {
   const firstRow = reviews.slice(0, reviews.length / 2);
   const secondRow = reviews.slice(reviews.length / 2);
    
-  notifications = Array.from({ length: 77 }, () => notifications).flat();
+  notifications = Array.from({ length: 47 }, () => notifications).flat();
   const Notification = ({ name, icon, color }: Item) => {
     return (
       <figure
@@ -108,7 +109,6 @@ export default function Home() {
       </figure>
     );
   };
-
   const ReviewCard = ({
     img,
     name,
@@ -145,124 +145,131 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen text-white ">
-      <div className="w-screen h-screen bg-netural-950">
-        <div className="h-fit mx-10 mt-28 rounded-xl bg-[#ff4d00] py-7 px-5 flex">
-          <div>
-            <h2 className="w-full md:w-2/6 text-4xl md:text-5xl font-extrabold text-black">Master Coding with Personalized Learning Plans</h2>
-            <p className="md:w-1/2 font-mono mt-5"><b>CodingAashram</b> leverages AI to create personalized learning paths based on your current skills, guiding you to land your dream software development job.</p>
+    <>
+      <Head>
+        <title>CodingAashram - Personalized Coding Roadmaps</title>
+        <meta name="description" content="Get AI-based personalized roadmaps for software development success." />
+        <meta name="keywords" content="coding roadmap, AI learning platform, codingaashram, codingashram, codingaashram.com,codingashram.com" />
+      </Head>
+      <div className="min-h-screen text-white ">
+        <div className="w-screen h-screen bg-netural-950">
+          <div className="h-fit mx-10 mt-28 rounded-xl bg-[#ff4d00] py-7 px-5 flex">
+            <div>
+              <h1 className="w-full md:w-2/6 text-4xl md:text-5xl font-extrabold text-black">Master Coding with Personalized Learning Plans</h1>
+              <p className="md:w-1/2 font-mono mt-5"><b>CodingAashram</b> leverages AI to create personalized learning paths based on your current skills, guiding you to land your dream software development job.</p>
+            </div>
+            <div></div>
           </div>
-          <div></div>
+          <div className="h-2/4 md:h-1/4 mx-10 my-5 rounded-xl flex flex-col md:flex-row gap-5">
+            <div className="md:h-full md:w-3/4 rounded-xl bg-transparent md:bg-neutral-200 text-xs md:text-lg font-bold text-black flex items-center justify-around gap-2">
+              <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">1.Create account</h2>
+              <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">2.Provide Details</h2>
+              <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">3.Generate Roadmap</h2>
+              <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">4.Follow It</h2>
+            </div>
+            <div className="h-2/3 md:h-full md:w-1/4 rounded-xl p-5 relative flex flex-col overflow-hidden border bg-neutral-600 md:shadow-xl">
+                <AnimatedList>
+                  {notifications.map((item, idx) => (
+                    <Notification {...item} key={idx} />
+                  ))}
+                </AnimatedList>
+            </div>
+          </div>
+          <div className="w-full flex items-center justify-center text-7xl">
+            <div className="border-[1px] border-[#ff4d00] rounded-full p-3 mt-5 ">
+              <IoIosArrowRoundDown className="duration-75 hover:translate-y-2"/>
+            </div>
+          </div>
         </div>
-        <div className="h-2/4 md:h-1/4 mx-10 my-5 rounded-xl flex flex-col md:flex-row gap-5">
-          <div className="md:h-full md:w-3/4 rounded-xl bg-transparent md:bg-neutral-200 text-xs md:text-lg font-bold text-black flex items-center justify-around gap-2">
-            <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">1.Create account</h2>
-            <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">2.Provide Details</h2>
-            <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">3.Generate Roadmap</h2>
-            <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">4.Follow It</h2>
-          </div>
-          <div className="h-2/3 md:h-full md:w-1/4 rounded-xl p-5 relative flex flex-col overflow-hidden border bg-neutral-600 md:shadow-xl">
-              <AnimatedList>
-                {notifications.map((item, idx) => (
-                  <Notification {...item} key={idx} />
-                ))}
-              </AnimatedList>
-          </div>
-        </div>
-        <div className="w-full flex items-center justify-center text-7xl">
-          <div className="border-[1px] border-[#ff4d00] rounded-full p-3 mt-5 ">
-            <IoIosArrowRoundDown className="duration-75 hover:translate-y-2"/>
-          </div>
-        </div>
-      </div>
-      <div className="w-screen h-full bg-neutral-950 overflow-hidden relative">
-        <Particles
-          className="absolute inset-0"
-          quantity={300}
-          ease={80}
-          color={"#ff4d00"}
-          refresh
-        />
-        <div className="px-16 py-20">
-          <p className="text-lg font-mono font-thin">
-            are you still using those generic roadmaps that have no idea about your skills. 
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold leading-snug ">We provide <span className="text-[#ff4d00]">Personalized Roadmap</span>,<br/>Just for You<br/>According to Your :</h2>
-          <div className="w-full flex items-center gap-2 md:gap-7 justify-around flex-wrap my-5">
-            <MagicCard
-                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/3 md:w-1/5"
-                gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
-              >
-                Skills
-              </MagicCard>
+        <div className="w-screen h-full bg-neutral-950 overflow-hidden relative">
+          <Particles
+            className="absolute inset-0"
+            quantity={300}
+            ease={80}
+            color={"#ff4d00"}
+            refresh
+          />
+          <div className="px-16 py-20">
+            <p className="text-lg font-mono font-thin">
+              are you still using those generic roadmaps that have no idea about your skills. 
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold leading-snug ">We provide <span className="text-[#ff4d00]">Personalized Roadmap</span>,<br/>Just for You<br/>According to Your :</h2>
+            <div className="w-full flex items-center gap-2 md:gap-7 justify-around flex-wrap my-5">
               <MagicCard
-                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/2 md:w-1/5"
-                gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
-              >
-                Achivement
-              </MagicCard>
-              <MagicCard
-                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/2 md:w-1/5"
-                gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
-              >
-                Requirement
-              </MagicCard>
-              <MagicCard
-                className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/3 md:w-1/5"
-                gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
-              >
-                Goal
-              </MagicCard>
+                  className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/3 md:w-1/5"
+                  gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
+                >
+                  Skills
+                </MagicCard>
+                <MagicCard
+                  className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/2 md:w-1/5"
+                  gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
+                >
+                  Achivement
+                </MagicCard>
+                <MagicCard
+                  className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/2 md:w-1/5"
+                  gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
+                >
+                  Requirement
+                </MagicCard>
+                <MagicCard
+                  className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-lg md:text-3xl py-10 w-1/3 md:w-1/5"
+                  gradientColor={theme === "dark" ? "#ff4d00" : "#fff"}
+                >
+                  Goal
+                </MagicCard>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="w-screen h-screen bg-neutral-950 relative">
-        <Particles
-          className="absolute inset-0"
-          quantity={500}
-          ease={80}
-          color={"#ff4d00"}
-          refresh
-        />
-        <div className="w-full px-16 py-5">
-          <h2 className="text-3xl md:text-5xl font-semibold leading-snug ">study says,<br />Personalized roadmaps are <span className="font-bold text-[#ff4d00]">73%</span> more efficient that others.</h2>
-          <p className="text-lg font-mono font-thin">
-            Make a move towards smart learning.<br/>
-          </p><br />
-          <Link 
-              href={"/signin"}
-              className="px-5 md:px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Discover Your Path
-          </Link>
-        </div>
-        <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg md:shadow-xl">
-          <Marquee pauseOnHover className="[--duration:20s]">
-            {firstRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
-            ))}
-          </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s]">
-            {secondRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
-            ))}
-          </Marquee>
-        </div>
-      </div>
-      <div className="max-h-screen flex justify-center">
-        <div className="my-40">
-          <h1 className="text-center font-semibold text-4xl md:text-6xl my-5">coding<span className="text-[#FF4D00]">आश्रम</span></h1>
-          <p className="flex flex-col md:flex-row mt-10 md:mt-0 font-mono text-center tracking-[3px] text-[#ff4d00]"><span className="md:mx-2">Smart Prep</span>|<span className="md:mx-2">Smarter Placements</span>|<span className="md:mx-2">Smart Folks</span></p>
-          <div className="w-full mt-10 md:px-20 flex flex-col md:flex-row gap-5 md:gap-0 items-center justify-between">
+        <div className="w-screen h-screen bg-neutral-950 relative">
+          <Particles
+            className="absolute inset-0"
+            quantity={500}
+            ease={80}
+            color={"#ff4d00"}
+            refresh
+          />
+          <div className="w-full px-16 py-5">
+            <h2 className="text-3xl md:text-5xl font-semibold leading-snug ">study says,<br />Personalized roadmaps are <span className="font-bold text-[#ff4d00]">73%</span> more efficient that others.</h2>
+            <p className="text-lg font-mono font-thin">
+              Make a move towards smart learning.<br/>
+            </p><br />
             <Link 
-            href={"/signup"}
-            className="px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-xl hover:text-[#fff] transition-colors duration-300">signUp
-            </Link>
-            <Link 
-            href={"/login"}
-            className="px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-xl hover:text-[#fff] transition-colors duration-300">login
+                href={"/signin"}
+                className="px-5 md:px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Discover Your Path
             </Link>
           </div>
+          <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg md:shadow-xl">
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {firstRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+            <Marquee reverse pauseOnHover className="[--duration:20s]">
+              {secondRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+          </div>
+        </div>
+        <div className="max-h-screen flex justify-center">
+          <div className="my-40">
+            <h1 className="text-center font-semibold text-4xl md:text-6xl my-5">coding<span className="text-[#FF4D00]">आश्रम</span></h1>
+            <p className="flex flex-col md:flex-row mt-10 md:mt-0 font-mono text-center tracking-[3px] text-[#ff4d00]"><span className="md:mx-2">Smart Prep</span>|<span className="md:mx-2">Smarter Placements</span>|<span className="md:mx-2">Smart Folks</span></p>
+            <div className="w-full mt-10 md:px-20 flex flex-col md:flex-row gap-5 md:gap-0 items-center justify-between">
+              <Link 
+              href={"/signup"}
+              className="px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-xl hover:text-[#fff] transition-colors duration-300">signUp
+              </Link>
+              <Link 
+              href={"/login"}
+              className="px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-xl hover:text-[#fff] transition-colors duration-300">login
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
