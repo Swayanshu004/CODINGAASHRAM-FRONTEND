@@ -39,37 +39,37 @@ export default function Home() {
   ];
   const reviews = [
     {
-      name: "Someone",
+      name: "Someone (Demo)",
       username: "CS student",
       body: "I've never seen anything like this before. It's amazing. I love it.",
       img: "https://avatar.vercel.sh/jack",
     },
     {
-      name: "Someone",
+      name: "Someone (Demo)",
       username: "Assistant Prof.",
       body: "I don't know what to say. I'm speechless. This is amazing.",
       img: "https://avatar.vercel.sh/jill",
     },
     {
-      name: "Someone",
+      name: "Someone (Demo)",
       username: "CS Student",
       body: "I'm at a loss for words. This is amazing. I love it.",
       img: "https://avatar.vercel.sh/john",
     },
     {
-      name: "Someone",
+      name: "Someone (Demo)",
       username: "Parents",
       body: "I'm at a loss for words. This is amazing. I love it.",
       img: "https://avatar.vercel.sh/jane",
     },
     {
-      name: "Someone",
+      name: "Someone (Demo)",
       username: "Assistant Prof.",
       body: "I'm at a loss for words. This is amazing. I love it.",
       img: "https://avatar.vercel.sh/jenny",
     },
     {
-      name: "Someone",
+      name: "Someone (Demo)",
       username: "CS student",
       body: "I'm at a loss for words. This is amazing. I love it.",
       img: "https://avatar.vercel.sh/james",
