@@ -162,10 +162,10 @@ export default function Home() {
           </div>
           <div className="h-2/4 md:h-1/4 mx-10 my-5 rounded-xl flex flex-col md:flex-row gap-5">
             <div className="md:h-full md:w-3/4 rounded-xl bg-transparent md:bg-neutral-200 text-xs md:text-lg font-bold text-black flex items-center justify-around gap-2">
-              <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">1.Create account</h2>
-              <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">2.Provide Details</h2>
-              <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">3.Generate Roadmap</h2>
-              <h2 className="border-2 px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">4.Follow It</h2>
+              <h2 className="border-[1px] px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">1. Create account</h2>
+              <h2 className="border-[1px] px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">2. Provide Details</h2>
+              <h2 className="border-[1px] px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">3. Generate Roadmap</h2>
+              <h2 className="border-[1px] px-2 py-4 md:py-10 md:px-7 rounded-md md:rounded-xl bg-neutral-300 md:bg-[#ff4d00]">4. Follow It</h2>
             </div>
             <div className="h-2/3 md:h-full md:w-1/4 rounded-xl p-5 relative flex flex-col overflow-hidden border bg-neutral-600 md:shadow-xl">
                 <AnimatedList>
