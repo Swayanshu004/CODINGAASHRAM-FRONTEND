@@ -3,7 +3,7 @@ import Marquee from "@/components/ui/marquee";
 import Particles from "@/components/ui/particles";
 import { MagicCard } from "@/components/ui/magic-card";
 import { AnimatedList } from "@/components/ui/animated-list";
-import { IoIosArrowRoundDown } from "react-icons/io";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -176,8 +176,8 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full flex items-center justify-center text-7xl">
-            <div className="border-[1px] border-[#ff4d00] rounded-full p-3 mt-5 ">
-              <IoIosArrowRoundDown className="duration-75 hover:translate-y-2"/>
+            <div className="">
+              <MdKeyboardDoubleArrowDown className="hover:translate-y-5 duration-500 ease-in-out"/>
             </div>
           </div>
         </div>
@@ -237,7 +237,7 @@ export default function Home() {
             </p><br />
             <Link 
                 href={"/signin"}
-                className="px-5 md:px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff]">Discover Your Path
+                className="px-5 md:px-10 py-3 border-2 border-[#ff4d00] text-[#ff4d00] text-lg font-semibold rounded-full hover:text-[#fff] duration-500 ">Discover Your Path
             </Link>
           </div>
           <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg md:shadow-xl">

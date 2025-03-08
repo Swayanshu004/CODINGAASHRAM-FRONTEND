@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="border-[1px] border-black bg-neutral-200 bg-opacity-25 text-white flex items-center justify-between rounded-3xl my-4 mx-10 py-4 px-7">
+    <header className="border-[1px] border-black bg-neutral-200 bg-opacity-25 text-white flex items-center justify-between rounded-xl my-4 mx-10 py-4 px-7">
       <Link href="/">
         <div className="text-2xl md:text-4xl font-bold">
           coding<span className="text-[#ff4d00]">आश्रम</span>
